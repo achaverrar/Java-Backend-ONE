@@ -1,5 +1,7 @@
 package ejercicio_07_controlando_flujo_con_loops;
 
+import java.util.Iterator;
+
 public class EjemploCiclos {
 
 	public static void main(String[] args) {
@@ -20,6 +22,19 @@ public class EjemploCiclos {
         	total += contador;
         	contador++;
         }
+        System.out.println("La suma de todos los n naturales de 1 a 10 es: " + total);
+
+        // For loop
+        // Prints all natural numbers from 1 to 10
+        for(int i = 1; i <= 10; i++) {
+        	System.out.println(i);
+        }
+        
+        // Prints out the sum of all natural numbers from 1 to 10
+        total = 0;
+        for (int i = 1; i <= 10; i++) {
+        	total += i;
+		}
         System.out.println("La suma de todos los n naturales de 1 a 10 es: " + total);
 	}
 
