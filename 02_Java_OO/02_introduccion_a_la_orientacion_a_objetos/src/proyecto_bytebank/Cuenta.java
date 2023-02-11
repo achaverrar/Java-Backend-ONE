@@ -13,4 +13,14 @@ public class Cuenta {
 		// name collisions between attributes and other kinds of variables 
 		this.saldo += valor;
 	}
+	
+	// For methods that return something, we must declare the type 
+	// of data that will be returned
+	public boolean retirar(double valor) {
+		if(this.saldo >= valor) {
+			this.saldo -= valor;
+			return true;
+		}
+		return false;
+	}
 }
