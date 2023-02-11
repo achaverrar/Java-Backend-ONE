@@ -2,7 +2,7 @@ package proyecto_bytebank;
 
 public class Cuenta {
 	private double saldo;
-	int agencia;
+	private int agencia;
 	int numero;
 	// Attributes that are instances of other classes are set to null by default
 	// Initializing them prevents NullPointerException errors when trying to access them
@@ -39,5 +39,13 @@ public class Cuenta {
 	
 	public double getSaldo() {
 		return this.saldo;
+	}
+	
+	public int getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(int agencia) {
+		this.agencia = agencia;
 	}
 }

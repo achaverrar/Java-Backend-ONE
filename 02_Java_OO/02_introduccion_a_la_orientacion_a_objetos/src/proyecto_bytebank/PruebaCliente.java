@@ -11,7 +11,7 @@ public class PruebaCliente {
 		
 		// Setting up their account
 		Cuenta cuentaDeCliente = new Cuenta();
-		cuentaDeCliente.agencia = 1;
+		cuentaDeCliente.setAgencia(1);
 		cuentaDeCliente.depositar(1000.0);
 		
 		// Creating a link between both instances 
