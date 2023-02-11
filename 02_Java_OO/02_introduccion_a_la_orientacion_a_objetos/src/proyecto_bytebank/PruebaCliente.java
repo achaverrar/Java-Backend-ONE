@@ -16,13 +16,13 @@ public class PruebaCliente {
 		
 		// Creating a link between both instances 
 		// (cliente and cuentaDeCliente) 
-		cuentaDeCliente.titular = cliente;
+		cuentaDeCliente.setTitular(cliente);
 		
 		// Accessing cliente data via cuentaDeCliente
-		System.out.println(cuentaDeCliente.titular.nombre);
+		System.out.println(cuentaDeCliente.getTitular().nombre);
 		
 		// Both point to the same space in memory 
-		System.out.println(cuentaDeCliente.titular);
+		System.out.println(cuentaDeCliente.getTitular());
 		System.out.println(cliente);
 
 	}

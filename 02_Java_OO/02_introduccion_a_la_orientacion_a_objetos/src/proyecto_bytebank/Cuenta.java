@@ -6,7 +6,7 @@ public class Cuenta {
 	private int numero;
 	// Attributes that are instances of other classes are set to null by default
 	// Initializing them prevents NullPointerException errors when trying to access them
-	Cliente titular = new Cliente();
+	private Cliente titular = new Cliente();
 
 	// Void methods don't return anything
 	// methods' names should follow lower-camel case naming convention
@@ -55,5 +55,13 @@ public class Cuenta {
 
 	public void setNumero(int numero) {
 		this.numero = numero;
+	}
+
+	public Cliente getTitular() {
+		return titular;
+	}
+
+	public void setTitular(Cliente titular) {
+		this.titular = titular;
 	}
 }
