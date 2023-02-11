@@ -10,8 +10,7 @@ public class PruebaCliente {
 		cliente.setTelefono("3123456789");
 		
 		// Setting up their account
-		Cuenta cuentaDeCliente = new Cuenta();
-		cuentaDeCliente.setAgencia(1);
+		Cuenta cuentaDeCliente = new Cuenta(1);
 		cuentaDeCliente.depositar(1000.0);
 		
 		// Creating a link between both instances 

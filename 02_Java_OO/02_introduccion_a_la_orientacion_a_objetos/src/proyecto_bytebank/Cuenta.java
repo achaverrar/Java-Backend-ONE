@@ -8,6 +8,25 @@ public class Cuenta {
 	// Initializing them prevents NullPointerException errors when trying to access them
 	private Cliente titular = new Cliente();
 
+	// Constructors
+	// Option 1: receives agencia as parameter
+	// Is this were the only constructor, it wouldn't be possible to create an instance 
+	// of Cuenta without specifying a value for agencia
+	public Cuenta(int agencia) {
+		if(agencia <= 0) {
+            System.out.println("Solo se permiten números positivos");
+            this.agencia = 1;
+        } else {
+        	this.agencia = agencia;        	
+        }
+		System.out.println("Aquí se crea una nueva cuenta");
+	}
+	
+	// Option 2: in case agencia isn't specified, this constructor sets it to 1 by default
+	public Cuenta() {
+		this(1);
+	}
+	
 	// Void methods don't return anything
 	// methods' names should follow lower-camel case naming convention
 	public void depositar(double valor) {
@@ -43,10 +62,6 @@ public class Cuenta {
 	
 	public int getAgencia() {
 		return agencia;
-	}
-
-	public void setAgencia(int agencia) {
-		this.agencia = agencia;
 	}
 
 	public int getNumero() {
