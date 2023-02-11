@@ -7,7 +7,7 @@ public class PruebaCliente {
 		Cliente cliente = new Cliente();
 		cliente.setNombre("Ayxa");
 		cliente.setDocumento("444455555");
-		cliente.telefono = "3123456789";
+		cliente.setTelefono("3123456789");
 		
 		// Setting up their account
 		Cuenta cuentaDeCliente = new Cuenta();
