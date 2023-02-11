@@ -7,6 +7,14 @@ public class PruebaMetodos {
 		cuenta.saldo = 300;
 		cuenta.depositar(200);
 		System.out.println(cuenta.saldo);
+		
+		boolean estadoRetiro = cuenta.retirar(100);
+		System.out.println(estadoRetiro);
+		System.out.println(cuenta.saldo);
+		
+		estadoRetiro = cuenta.retirar(600);
+		System.out.println(estadoRetiro);
+		System.out.println(cuenta.saldo);
 	}
 
 }
