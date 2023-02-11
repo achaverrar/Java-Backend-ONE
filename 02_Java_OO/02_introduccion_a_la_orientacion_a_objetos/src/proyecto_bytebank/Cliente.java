@@ -2,7 +2,7 @@ package proyecto_bytebank;
 
 public class Cliente {
 	private String nombre;
-	String documento;
+	private String documento;
 	String telefono;
 	
 	public String getNombre() {
@@ -11,5 +11,13 @@ public class Cliente {
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 }
