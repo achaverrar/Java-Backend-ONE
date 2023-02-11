@@ -43,5 +43,7 @@ public class CrearCuenta {
 		} else {
 			System.out.println("La segunda y la tercera cuenta son instancias diferentes");
 		}
+		
+		System.out.println(Cuenta.getTotalCuentas());
 	}
 }

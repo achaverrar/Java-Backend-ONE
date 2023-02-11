@@ -7,12 +7,14 @@ public class Cuenta {
 	// Attributes that are instances of other classes are set to null by default
 	// Initializing them prevents NullPointerException errors when trying to access them
 	private Cliente titular = new Cliente();
-
+	private static int totalCuentas = 0; 
+	
 	// Constructors
 	// Option 1: receives agencia as parameter
 	// Is this were the only constructor, it wouldn't be possible to create an instance 
 	// of Cuenta without specifying a value for agencia
 	public Cuenta(int agencia) {
+		Cuenta.totalCuentas++;
 		if(agencia <= 0) {
             System.out.println("Solo se permiten números positivos");
             this.agencia = 1;
@@ -78,5 +80,9 @@ public class Cuenta {
 
 	public void setTitular(Cliente titular) {
 		this.titular = titular;
+	}
+	
+	public static int getTotalCuentas() {
+		return Cuenta.totalCuentas;
 	}
 }
