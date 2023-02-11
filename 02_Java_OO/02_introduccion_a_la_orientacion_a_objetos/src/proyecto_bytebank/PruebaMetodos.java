@@ -49,5 +49,4 @@ public class PruebaMetodos {
 			System.out.println("No se pudo efectuar la transferencia.");			
 		}
 	}
-
 }
