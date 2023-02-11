@@ -4,7 +4,7 @@ public class Cuenta {
 	double saldo;
 	int agencia;
 	int numero;
-	String titular;
+	Cliente titular;
 	
 	// Void methods don't return anything
 	// methods' names should follow lower-camel case naming convention
