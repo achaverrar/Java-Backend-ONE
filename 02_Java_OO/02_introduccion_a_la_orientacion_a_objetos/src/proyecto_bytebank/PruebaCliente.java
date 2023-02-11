@@ -12,7 +12,7 @@ public class PruebaCliente {
 		// Setting up their account
 		Cuenta cuentaDeCliente = new Cuenta();
 		cuentaDeCliente.agencia = 1;
-		cuentaDeCliente.saldo = 1000.0;
+		cuentaDeCliente.depositar(1000.0);
 		
 		// Creating a link between both instances 
 		// (cliente and cuentaDeCliente) 

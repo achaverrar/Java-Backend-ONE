@@ -13,20 +13,20 @@ public class CrearCuenta {
 		// boolean -> false
 		// String -> null
 		Cuenta primeraCuenta = new Cuenta();
-		primeraCuenta.saldo = 200;
-		System.out.println(primeraCuenta.saldo);
+		primeraCuenta.depositar(200);
+		System.out.println(primeraCuenta.getSaldo());
 
 		Cuenta segundaCuenta = new Cuenta(); // creates an independent instance
-		segundaCuenta.saldo = 50;
-		System.out.println(segundaCuenta.saldo);
+		segundaCuenta.depositar(50);
+		System.out.println(segundaCuenta.getSaldo());
 
-		System.out.println("primera cuenta tiene " + primeraCuenta.saldo);
-		System.out.println("segunda cuenta tiene " + segundaCuenta.saldo);
+		System.out.println("primera cuenta tiene un saldo de " + primeraCuenta.getSaldo());
+		System.out.println("segunda cuenta tiene un saldo de " + segundaCuenta.getSaldo());
 
 		Cuenta terceraCuenta = primeraCuenta; // both variables point to the same object in memory
-		terceraCuenta.saldo = 50; // this assignment affects both instances
-		System.out.println("tercera cuenta tiene " + terceraCuenta.saldo);
-		System.out.println("primera cuenta tiene " + primeraCuenta.saldo);
+		terceraCuenta.depositar(50); // this assignment affects both instances
+		System.out.println("tercera cuenta tiene un saldo de " + terceraCuenta.getSaldo());
+		System.out.println("primera cuenta tiene un saldo de " + primeraCuenta.getSaldo());
 		
 		if(primeraCuenta == terceraCuenta) {
 			System.out.println("La primera y la tercera cuenta son la misma instancia");
@@ -34,8 +34,8 @@ public class CrearCuenta {
 			System.out.println("La primera y la tercera cuenta son instancias diferentes");			
 		}
 		
-		System.out.println("segunda cuenta tiene " + segundaCuenta.saldo);
-		System.out.println("tercera cuenta tiene " + terceraCuenta.saldo);
+		System.out.println("segunda cuenta tiene un saldo de " + segundaCuenta.getSaldo());
+		System.out.println("tercera cuenta tiene un saldo de " + terceraCuenta.getSaldo());
 		
 		// Having the same values don't make them the same instance
 		if(segundaCuenta == terceraCuenta) {

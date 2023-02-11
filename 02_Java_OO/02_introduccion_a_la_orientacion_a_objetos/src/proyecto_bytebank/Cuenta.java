@@ -1,7 +1,7 @@
 package proyecto_bytebank;
 
 public class Cuenta {
-	double saldo;
+	private double saldo;
 	int agencia;
 	int numero;
 	// Attributes that are instances of other classes are set to null by default
@@ -35,5 +35,9 @@ public class Cuenta {
 			return true;
 		}
 		return false;
+	}
+	
+	public double getSaldo() {
+		return this.saldo;
 	}
 }
