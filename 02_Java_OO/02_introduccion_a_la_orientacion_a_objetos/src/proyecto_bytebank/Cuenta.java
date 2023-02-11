@@ -4,7 +4,9 @@ public class Cuenta {
 	double saldo;
 	int agencia;
 	int numero;
-	Cliente titular;
+	// Attributes that are instances of other classes are set to null by default
+	// Initializing them prevents NullPointerException errors when trying to access them
+	Cliente titular = new Cliente();
 	
 	// Void methods don't return anything
 	// methods' names should follow lower-camel case naming convention
