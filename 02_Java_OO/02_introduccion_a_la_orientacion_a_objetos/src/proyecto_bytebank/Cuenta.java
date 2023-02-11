@@ -23,4 +23,13 @@ public class Cuenta {
 		}
 		return false;
 	}
+	
+	public boolean transferir(double valor, Cuenta cuentaDestino) {
+		if(this.saldo >= valor) {
+			this.retirar(valor);
+			cuentaDestino.depositar(valor);
+			return true;
+		}
+		return false;
+	}
 }
