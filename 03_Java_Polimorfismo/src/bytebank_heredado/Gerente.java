@@ -1,35 +1,18 @@
 package bytebank_heredado;
 
-public class Gerente {
-	private String nombre;
-	private String documento;
-	private double salario;
+public class Gerente extends Funcionario{
+	private String clave;
 
-	public String getNombre() {
-		return this.nombre;
+	// Gives clave a default value 
+	public Gerente() {
+		this.clave = "AluraCursosOnLine";
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 
-	public String getDocumento() {
-		return this.documento;
-	}
-
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
-
-	public double getSalario() {
-		return this.salario;
-	}
-
-	public void setSalario(double salario) {
-		this.salario = salario;
-	}
-
-	public double getBonificacion() {
-		return this.salario;
+	public boolean iniciarSesion(String clave) {
+		return this.clave == clave;
 	}
 }
