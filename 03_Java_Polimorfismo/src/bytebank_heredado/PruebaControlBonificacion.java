@@ -9,8 +9,12 @@ public class PruebaControlBonificacion {
 		Gerente gerente = new Gerente();
 		gerente.setSalario(10000);
 
+		Contador contador = new Contador();
+		contador.setSalario(5000);
+		
 		ControlBonificacion controlBonificacion = new ControlBonificacion();
 		controlBonificacion.registrarSalario(funcionario);
 		controlBonificacion.registrarSalario(gerente);
+		controlBonificacion.registrarSalario(contador);
 	}
 }
