@@ -8,7 +8,6 @@ public class PruebaGerente {
 
 		// Testing getBonification()
 		gerente.setSalario(5000);
-		gerente.setTipo(1);
 		System.out.println(gerente.getSalario());
 		System.out.println(gerente.getBonificacion());
 

@@ -15,4 +15,12 @@ public class Gerente extends Funcionario{
 	public boolean iniciarSesion(String clave) {
 		return this.clave == clave;
 	}
+	
+	// The keyword super grants classes access to private fields and
+	// methods from its corresponding superclass
+	// Classes can overwrite its superclass' fields and methods if 
+	// only the value/function body is modified
+	public double getBonificacion() {
+		return super.getSalario() + super.getBonificacion();
+	}
 }
