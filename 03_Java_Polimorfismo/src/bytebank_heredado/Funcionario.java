@@ -32,7 +32,8 @@ public abstract class Funcionario {
 		this.salario = salario;
 	}
 
-	public double getBonificacion() {
-		return this.salario * 0.1;
-	}
+	// Only abstract classes can have abstract methods
+	// Abstract methods can NOT be implemented in their abstract classes
+	// Abstract methods MUST be overridden/implemented in non-abstract subclasses
+	public abstract double getBonificacion();
 }
