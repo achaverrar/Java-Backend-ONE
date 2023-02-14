@@ -2,7 +2,10 @@ package bytebank_heredado;
 
 public class PruebaFuncionario {
 	public static void main(String[] args) {
-		Funcionario funcionario = new Funcionario();
+		// Instances of the type Funcionario must be 
+		// instances of a non-abstract subclass of
+		// Funcionario (i.e. Contador or Gerente)
+		Funcionario funcionario = new Contador();
 		funcionario.setNombre("Diego");
 		funcionario.setDocumento("444556665");
 		funcionario.setSalario(2000);

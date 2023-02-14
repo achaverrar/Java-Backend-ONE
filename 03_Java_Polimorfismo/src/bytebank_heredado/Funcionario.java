@@ -1,6 +1,9 @@
 package bytebank_heredado;
 
-public class Funcionario {
+// Abstract classes can't be instantiated
+// Instances of this data type must be 
+// instances of a non-abstract subclass
+public abstract class Funcionario {
 	private String nombre;
 	private String documento;
 	private double salario;
