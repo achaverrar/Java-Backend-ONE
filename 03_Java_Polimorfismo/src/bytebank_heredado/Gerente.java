@@ -1,21 +1,6 @@
 package bytebank_heredado;
 
-public class Gerente extends Funcionario {
-	private String clave;
-
-	// Gives clave a default value
-	public Gerente() {
-		this.clave = "AluraCursosOnLine";
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
-
-	public boolean iniciarSesion(String clave) {
-		return this.clave == clave;
-	}
-
+public class Gerente extends FuncionarioAutenticable {
 	// The keyword super grants classes access to private fields and
 	// methods from its corresponding superclass
 	// Classes can overwrite its superclass' fields and methods if
