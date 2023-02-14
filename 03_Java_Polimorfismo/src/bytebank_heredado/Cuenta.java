@@ -1,6 +1,6 @@
 package bytebank_heredado;
 
-public class Cuenta {
+public abstract class Cuenta {
 	private double saldo;
 	private int agencia = 1;
 	private int numero;
