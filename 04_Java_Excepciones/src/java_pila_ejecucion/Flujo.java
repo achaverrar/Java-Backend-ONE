@@ -21,16 +21,23 @@ public class Flujo {
 			// An uncaught exception will stop the execution of the program
 			// try and catch statements go hand in hand
 			try {
-				int num = 0;
+				/* int num = 0;
 				int resultado = i / num;
 				System.out.println(resultado);
+				*/
+				String test = null;
+				System.out.println(test.toString());
 			}
 			// Exceptions are objects in Java
 			// There are multiple types of exceptions
 			// Case 1: catching an exception of the type ArithmeticException
-			catch (ArithmeticException exception) {
+			/*catch (ArithmeticException exception) {
 				System.out.println(exception.getMessage());
 				exception.printStackTrace();
+			}*/ 
+			catch (NullPointerException exception) {
+				System.out.println(exception.getMessage());
+				exception.printStackTrace();				
 			}
 		}
 		System.out.println("Fin metodo2");
