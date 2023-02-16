@@ -9,5 +9,9 @@ public class PruebaCuenta {
 		cc.transferir(1000, ca);
 		System.out.println(cc.getSaldo());
 		System.out.println(ca.getSaldo());
+		
+		// Prueba el caso en que se intenta retirar 
+		// un valor mayor al saldo actual
+		ca.retirar(1200);
 	}
 }
