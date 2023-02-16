@@ -17,10 +17,14 @@ public class Flujo {
 		System.out.println("Fin metodo1");
 	}
 
-	private static void metodo2() {
+	// Checked exceptions MUST be handled at some point of 
+	// their execution stack for compilation to happen
+	//
+	// If a method is not going to handle the checked exception
+	// it must (use the keyword throws) to re-throw the exception 
+	// to the next method in the stack one of them handles it 
+	private static void metodo2() throws MiException {
 		System.out.println("Inicio metodo2");
-		// We can create and throw our own exceptions in Java
 		throw new MiException("Mi excepcion fue lanzada");
-		// Only instances of the type Exception can thrown
 	}
 }

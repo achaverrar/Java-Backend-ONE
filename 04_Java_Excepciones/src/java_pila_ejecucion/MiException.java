@@ -1,9 +1,9 @@
 package java_pila_ejecucion;
 
-// Classes that extend RuntimeException yield 
-// unchecked exceptions (the compiler won't prevent
-// execution in case they're not handled)
-public class MiException extends RuntimeException{
+// Classes that extend Exception yield checked 
+// exceptions (the compiler won't allow compilation
+// until they're not handled)
+public class MiException extends Exception{
 	public MiException() {
 		super();
 	}
