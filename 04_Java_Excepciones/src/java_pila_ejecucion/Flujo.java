@@ -11,7 +11,14 @@ public class Flujo {
 		System.out.println("Inicio metodo1");
 		try {
 			metodo2();
-		} catch (MiException me) {
+		} 
+		// Although the most generic way to catch exceptions
+		// is using the type Exception in the catch block,
+		// this should be avoided as much as possible, to 
+		// properly handle each type of exception and to 
+		// know what kind of exceptions are being or could be
+		// generated in the program
+		catch (Exception me) {
 			me.printStackTrace();
 		}
 		System.out.println("Fin metodo1");
@@ -25,6 +32,9 @@ public class Flujo {
 	// to the next method in the stack one of them handles it 
 	private static void metodo2() throws MiException {
 		System.out.println("Inicio metodo2");
+		double division = 50/0;
+		String mensajeNulo = null;
+		mensajeNulo.length();
 		throw new MiException("Mi excepcion fue lanzada");
 	}
 }
