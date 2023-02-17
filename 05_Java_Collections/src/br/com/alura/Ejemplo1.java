@@ -42,5 +42,25 @@ public class Ejemplo1 {
 		// Having the same items isn't enough for
 		// two arrayLists to be the same
 		System.out.println(lista == lista2);
+
+		// Techniques to loop over ArrayLists
+		// 1. traditional for loop
+		System.out.println("for");
+		for (int i = 0; i < lista.size(); i++) {
+			// get(index) returns the item at the given index
+			System.out.println(lista.get(i));
+		}
+		
+		// 2. for-each
+		System.out.println("for-each");
+		for (String item : lista) {
+			System.out.println(item);
+		}
+		
+		// 3. forEach with resource lambda (Available from Java 8+) 
+		System.out.println("forEach");
+		lista.forEach(item -> {
+			System.out.println(item);
+		});
 	}
 }
