@@ -25,4 +25,11 @@ public class Curso {
 	public void setTiempo(int tiempo) {
 		this.tiempo = tiempo;
 	}
+
+	// By default toString() returns the address in memory
+	// of every instance of the class
+	@Override
+	public String toString() {
+		return this.nombre;
+	}
 }
