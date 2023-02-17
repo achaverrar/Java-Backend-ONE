@@ -3,7 +3,7 @@ package br.com.alura;
 // This is mandatory to work with ArrayLists
 import java.util.ArrayList;
 
-public class Ejemplo1 {
+public class ArrayLists1 {
 
 	public static void main(String[] args) {
 		String variable1 = "Ejemplo1";
