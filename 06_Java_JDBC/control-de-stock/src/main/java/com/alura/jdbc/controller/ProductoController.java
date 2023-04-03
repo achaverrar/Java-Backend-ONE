@@ -26,10 +26,10 @@ public class ProductoController {
 		Statement statement = con.createStatement();
 		statement.execute("SELECT id, nombre, descripcion, cantidad FROM producto");
 		ResultSet resultSet = statement.getResultSet();
-		
+
 		List<Map<String, String>> resultado = new ArrayList<>();
-		
-		while(resultSet.next()) {
+
+		while (resultSet.next()) {
 			Map<String, String> fila = new HashMap<>();
 			fila.put("id", String.valueOf(resultSet.getInt("id")));
 			fila.put("nombre", resultSet.getString("nombre"));
@@ -37,14 +37,24 @@ public class ProductoController {
 			fila.put("cantidad", String.valueOf(resultSet.getInt("cantidad")));
 			resultado.add(fila);
 		}
-		
+
 		con.close();
-		
+
 		return resultado;
 	}
 
-    public void guardar(Object producto) {
-		// TODO
+	public void guardar(Map<String, String> producto) throws SQLException {
+		Connection con = new ConnectionFactory().recuperaConexion();
+		Statement statement = con.createStatement();
+		statement.execute("INSERT INTO producto(nombre, descripcion, cantidad) "
+				+ "VALUES ('" + producto.get("nombre") + "', '" 
+				+ producto.get("descripcion") + "', '" 
+				+ producto.get("cantidad") + "');", Statement.RETURN_GENERATED_KEYS);
+		ResultSet resultSet = statement.getGeneratedKeys();
+		
+		while(resultSet.next()) {
+			System.out.println(String.format("Fue insertado el producto de id %d", resultSet.getInt(1)));
+		}
 	}
 
 }
