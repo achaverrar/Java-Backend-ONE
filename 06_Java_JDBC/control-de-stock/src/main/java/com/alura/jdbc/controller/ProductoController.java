@@ -1,7 +1,6 @@
 package com.alura.jdbc.controller;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.alura.jdbc.factory.ConnectionFactory;
 
 public class ProductoController {
 
@@ -21,7 +22,7 @@ public class ProductoController {
 	}
 
 	public List<Map<String, String>> listar() throws SQLException {
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost/control_de_stock?useTimeZone=true&serverTimeZone=UTC", "root", "root1234");
+		Connection con = new ConnectionFactory().recuperaConexion();
 		Statement statement = con.createStatement();
 		statement.execute("SELECT id, nombre, descripcion, cantidad FROM producto");
 		ResultSet resultSet = statement.getResultSet();
