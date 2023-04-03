@@ -29,6 +29,8 @@ public class ProductoController {
 		statement.setInt(4, id);
 		
 		statement.execute();
+		
+		con.close();
 
 		return statement.getUpdateCount();
 	}
@@ -42,6 +44,8 @@ public class ProductoController {
 		statement.setInt(1, Integer.valueOf(id));
 		
 		statement.execute();
+		
+		con.close();
 		
 		return statement.getUpdateCount();
 	}
@@ -86,6 +90,8 @@ public class ProductoController {
 		statement.execute();
 		
 		ResultSet resultSet = statement.getGeneratedKeys();
+		
+		con.close();
 		
 		while(resultSet.next()) {
 			System.out.println(String.format("Fue insertado el producto de id %d", resultSet.getInt(1)));
