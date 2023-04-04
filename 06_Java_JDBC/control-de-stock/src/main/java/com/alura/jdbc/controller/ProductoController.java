@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.alura.jdbc.factory.ConnectionFactory;
+import com.alura.jdbc.modelo.Producto;
 
 public class ProductoController {
 
@@ -21,7 +22,7 @@ public class ProductoController {
 		try (con) {
 			final PreparedStatement statement = con.prepareStatement(
 					"UPDATE producto SET " + "nombre = ?, " + "descripcion = ?, " + "cantidad = ? " + "WHERE id = ?");
-			
+
 			try (statement) {
 				statement.setString(1, nombre);
 				statement.setString(2, descripcion);
@@ -58,7 +59,7 @@ public class ProductoController {
 		try (con) {
 			final PreparedStatement statement = con
 					.prepareStatement("SELECT id, nombre, descripcion, cantidad FROM producto");
-			
+
 			try (statement) {
 				statement.execute();
 
@@ -79,11 +80,7 @@ public class ProductoController {
 		}
 	}
 
-	public void guardar(Map<String, String> producto) throws SQLException {
-		String nombre = producto.get("nombre");
-		String descripcion = producto.get("descripcion");
-		Integer cantidad = Integer.valueOf(producto.get("cantidad"));
-		Integer maximaCantidad = 50;
+	public void guardar(Producto producto) throws SQLException {
 
 		ConnectionFactory factory = new ConnectionFactory();
 		final Connection con = factory.recuperaConexion();
@@ -100,11 +97,7 @@ public class ProductoController {
 					Statement.RETURN_GENERATED_KEYS);
 
 			try (statement) {
-				do {
-					int cantidadParaGuardar = Math.min(cantidad, maximaCantidad);
-					ejecutarRegistro(statement, nombre, descripcion, cantidadParaGuardar);
-					cantidad -= maximaCantidad;
-				} while (cantidad > 0);
+				ejecutarRegistro(statement, producto);
 
 				/*
 				 * When auto-commit is set to false, we have to explicitly commit the changes to
@@ -114,15 +107,13 @@ public class ProductoController {
 			} catch (Exception e) {
 				con.rollback();
 			}
-
 		}
 	}
 
-	private void ejecutarRegistro(PreparedStatement statement, String nombre, String descripcion, Integer cantidad)
-			throws SQLException {
-		statement.setString(1, nombre);
-		statement.setString(2, descripcion);
-		statement.setInt(3, cantidad);
+	private void ejecutarRegistro(PreparedStatement statement, Producto producto) throws SQLException {
+		statement.setString(1, producto.getNombre());
+		statement.setString(2, producto.getDescripcion());
+		statement.setInt(3, producto.getCantidad());
 
 		statement.execute();
 
@@ -134,7 +125,8 @@ public class ProductoController {
 
 		try (resultSet) {
 			while (resultSet.next()) {
-				System.out.println(String.format("Fue insertado el producto de id %d", resultSet.getInt(1)));
+				producto.setId(resultSet.getInt(1));
+				System.out.println(String.format("Fue insertado el producto %s", producto));
 			}
 		}
 	}
