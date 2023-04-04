@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-=======
-/META-INF/
->>>>>>> a0618f3 (create connection to the database in the method listar from the ProductoController class and surround the function call with a try/catch statement in the cargarTabla method from the ControlDeStockFrame class)
 /com/
