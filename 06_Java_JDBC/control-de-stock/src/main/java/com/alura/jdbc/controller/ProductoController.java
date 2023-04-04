@@ -76,7 +76,6 @@ public class ProductoController {
 				}
 				return resultado;
 			}
-
 		}
 	}
 
