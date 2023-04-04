@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alura.jdbc.dao.ProductoDAO;
 import com.alura.jdbc.factory.ConnectionFactory;
 import com.alura.jdbc.modelo.Producto;
 
@@ -81,54 +82,9 @@ public class ProductoController {
 	}
 
 	public void guardar(Producto producto) throws SQLException {
+		ProductoDAO productoDAO = new ProductoDAO(new ConnectionFactory().recuperaConexion());
 
-		ConnectionFactory factory = new ConnectionFactory();
-		final Connection con = factory.recuperaConexion();
-
-		try (con) {
-			/*
-			 * If there's an error with the transaction and it can't be completed, all
-			 * progress made is undone.
-			 */
-			con.setAutoCommit(false);
-
-			final PreparedStatement statement = con.prepareStatement(
-					"INSERT INTO producto " + "(nombre, descripcion, cantidad) " + "VALUES (?, ?, ?)",
-					Statement.RETURN_GENERATED_KEYS);
-
-			try (statement) {
-				ejecutarRegistro(statement, producto);
-
-				/*
-				 * When auto-commit is set to false, we have to explicitly commit the changes to
-				 * the database
-				 */
-				con.commit();
-			} catch (Exception e) {
-				con.rollback();
-			}
-		}
-	}
-
-	private void ejecutarRegistro(PreparedStatement statement, Producto producto) throws SQLException {
-		statement.setString(1, producto.getNombre());
-		statement.setString(2, producto.getDescripcion());
-		statement.setInt(3, producto.getCantidad());
-
-		statement.execute();
-
-		/*
-		 * Java 9's syntax to close connections automatically. It only works with
-		 * entities that implement the interface Autoclosable.
-		 */
-		final ResultSet resultSet = statement.getGeneratedKeys();
-
-		try (resultSet) {
-			while (resultSet.next()) {
-				producto.setId(resultSet.getInt(1));
-				System.out.println(String.format("Fue insertado el producto %s", producto));
-			}
-		}
+		productoDAO.guardar(producto);
 	}
 
 }
