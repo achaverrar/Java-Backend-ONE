@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.alura.jdbc.factory.ConnectionFactory;
 import com.alura.jdbc.modelo.Producto;
 
 public class ProductoDAO {
@@ -54,11 +53,8 @@ public class ProductoDAO {
 	}
 
 	public List<Producto> listar() {
-		ConnectionFactory factory = new ConnectionFactory();
-		final Connection con = factory.recuperaConexion();
-
-		try (con) {
-			final PreparedStatement statement = con
+		try (this.con) {
+			final PreparedStatement statement = this.con
 					.prepareStatement("SELECT id, nombre, descripcion, cantidad FROM producto");
 
 			try (statement) {
@@ -81,6 +77,27 @@ public class ProductoDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public int modificar(String nombre, String descripcion, Integer id, Integer cantidad) {
+		try (this.con) {
+			final PreparedStatement statement = this.con.prepareStatement(
+					"UPDATE producto SET " + "nombre = ?, " + "descripcion = ?, " + "cantidad = ? " + "WHERE id = ?");
+			
+			try (statement) {
+				statement.setString(1, nombre);
+				statement.setString(2, descripcion);
+				statement.setInt(3, cantidad);
+				statement.setInt(4, id);
+				
+				statement.execute();
+				
+				return statement.getUpdateCount();
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 
 	public int eliminar(Integer id) {

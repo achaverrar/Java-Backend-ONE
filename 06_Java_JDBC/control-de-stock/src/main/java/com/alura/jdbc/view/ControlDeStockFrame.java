@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -189,12 +188,8 @@ public class ControlDeStockFrame extends JFrame {
 					String descripcion = (String) modelo.getValueAt(tabla.getSelectedRow(), 2);
 					Integer cantidad = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 3).toString());
 
-					int cantidadModificada;
-					try {
-						cantidadModificada = this.productoController.modificar(nombre, descripcion, id, cantidad);
-					} catch (SQLException e) {
-						throw new RuntimeException(e);
-					}
+					int cantidadModificada = this.productoController.modificar(nombre, descripcion, id, cantidad);
+					
 					JOptionPane.showMessageDialog(this, cantidadModificada + " item modificado con éxito!");
 				}, () -> JOptionPane.showMessageDialog(this, "Por favor, elije un item"));
 	}
