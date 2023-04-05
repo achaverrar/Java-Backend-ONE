@@ -2,12 +2,8 @@ package com.alura.jdbc.controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.alura.jdbc.dao.ProductoDAO;
 import com.alura.jdbc.factory.ConnectionFactory;
@@ -41,20 +37,8 @@ public class ProductoController {
 		}
 	}
 
-	public int eliminar(Integer id) throws SQLException {
-		ConnectionFactory factory = new ConnectionFactory();
-		final Connection con = factory.recuperaConexion();
-
-		try (con) {
-			final PreparedStatement statement = con.prepareStatement("DELETE FROM producto WHERE id = ?");
-
-			try (statement) {
-				statement.setInt(1, Integer.valueOf(id));
-				statement.execute();
-
-				return statement.getUpdateCount();
-			}
-		}
+	public int eliminar(Integer id) {
+		return this.productoDAO.eliminar(id);
 	}
 
 	public List<Producto> listar() {

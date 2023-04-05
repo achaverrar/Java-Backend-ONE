@@ -5,7 +5,6 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -210,12 +209,7 @@ public class ControlDeStockFrame extends JFrame {
 				.ifPresentOrElse(fila -> {
 					Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
 
-					int cantidadEliminada;
-					try {
-						cantidadEliminada = this.productoController.eliminar(id);
-					} catch (SQLException e) {
-						throw new RuntimeException(e);
-					}
+					int cantidadEliminada = this.productoController.eliminar(id);
 
 					modelo.removeRow(tabla.getSelectedRow());
 
