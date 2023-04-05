@@ -5,7 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import com.alura.jdbc.factory.ConnectionFactory;
 import com.alura.jdbc.modelo.Producto;
 
 public class ProductoDAO {
@@ -49,4 +54,35 @@ public class ProductoDAO {
 			}
 		}
 	}
+
+	public List<Producto> listar() {
+		ConnectionFactory factory = new ConnectionFactory();
+		final Connection con = factory.recuperaConexion();
+
+		try (con) {
+			final PreparedStatement statement = con
+					.prepareStatement("SELECT id, nombre, descripcion, cantidad FROM producto");
+
+			try (statement) {
+				statement.execute();
+
+				ResultSet resultSet = statement.getResultSet();
+
+				List<Producto> resultado = new ArrayList<>();
+
+				while (resultSet.next()) {
+					Producto fila = new Producto(
+							resultSet.getInt("id"), 
+							resultSet.getString("nombre"), 
+							resultSet.getString("descripcion"), 
+							resultSet.getInt("cantidad"));
+					resultado.add(fila);
+				}
+				return resultado;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 }

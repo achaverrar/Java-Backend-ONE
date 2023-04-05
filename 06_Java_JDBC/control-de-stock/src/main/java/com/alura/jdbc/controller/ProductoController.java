@@ -57,32 +57,8 @@ public class ProductoController {
 		}
 	}
 
-	public List<Map<String, String>> listar() throws SQLException {
-		ConnectionFactory factory = new ConnectionFactory();
-		final Connection con = factory.recuperaConexion();
-
-		try (con) {
-			final PreparedStatement statement = con
-					.prepareStatement("SELECT id, nombre, descripcion, cantidad FROM producto");
-
-			try (statement) {
-				statement.execute();
-
-				ResultSet resultSet = statement.getResultSet();
-
-				List<Map<String, String>> resultado = new ArrayList<>();
-
-				while (resultSet.next()) {
-					Map<String, String> fila = new HashMap<>();
-					fila.put("id", String.valueOf(resultSet.getInt("id")));
-					fila.put("nombre", resultSet.getString("nombre"));
-					fila.put("descripcion", resultSet.getString("descripcion"));
-					fila.put("cantidad", String.valueOf(resultSet.getInt("cantidad")));
-					resultado.add(fila);
-				}
-				return resultado;
-			}
-		}
+	public List<Producto> listar() {
+		return this.productoDAO.listar();
 	}
 
 	public void guardar(Producto producto) {
