@@ -18,7 +18,7 @@ public class ProductoDAO {
 	}
 
 	public void guardar(Producto producto) {
-		try (this.con) {
+		try {
 			final PreparedStatement statement = this.con.prepareStatement(
 					"INSERT INTO producto " + "(nombre, descripcion, cantidad) " + "VALUES (?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
@@ -53,7 +53,7 @@ public class ProductoDAO {
 	}
 
 	public List<Producto> listar() {
-		try (this.con) {
+		try {
 			final PreparedStatement statement = this.con
 					.prepareStatement("SELECT id, nombre, descripcion, cantidad FROM producto");
 
@@ -80,7 +80,7 @@ public class ProductoDAO {
 	}
 	
 	public int modificar(String nombre, String descripcion, Integer id, Integer cantidad) {
-		try (this.con) {
+		try {
 			final PreparedStatement statement = this.con.prepareStatement(
 					"UPDATE producto SET " + "nombre = ?, " + "descripcion = ?, " + "cantidad = ? " + "WHERE id = ?");
 			
@@ -101,7 +101,7 @@ public class ProductoDAO {
 	}
 
 	public int eliminar(Integer id) {
-		try (this.con) {
+		try {
 			final PreparedStatement statement = con.prepareStatement("DELETE FROM producto WHERE id = ?");
 
 			try (statement) {
