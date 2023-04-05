@@ -15,7 +15,7 @@ import com.alura.jdbc.factory.ConnectionFactory;
 import com.alura.jdbc.modelo.Producto;
 
 public class ProductoController {
-
+	
 	public int modificar(String nombre, String descripcion, Integer id, Integer cantidad) throws SQLException {
 		ConnectionFactory factory = new ConnectionFactory();
 		final Connection con = factory.recuperaConexion();
@@ -81,7 +81,7 @@ public class ProductoController {
 		}
 	}
 
-	public void guardar(Producto producto) throws SQLException {
+	public void guardar(Producto producto) {
 		ProductoDAO productoDAO = new ProductoDAO(new ConnectionFactory().recuperaConexion());
 
 		productoDAO.guardar(producto);

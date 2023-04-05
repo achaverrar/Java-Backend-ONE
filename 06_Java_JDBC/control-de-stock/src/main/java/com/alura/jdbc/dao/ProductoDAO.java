@@ -10,34 +10,22 @@ import com.alura.jdbc.modelo.Producto;
 
 public class ProductoDAO {
 	final private Connection con;
-	
+
 	public ProductoDAO(Connection con) {
 		this.con = con;
 	}
-	
-	public void guardar(Producto producto) throws SQLException {
-		try (this.con) {
-			/*
-			 * If there's an error with the transaction and it can't be completed, all
-			 * progress made is undone.
-			 */
-			this.con.setAutoCommit(false);
 
+	public void guardar(Producto producto) {
+		try (this.con) {
 			final PreparedStatement statement = this.con.prepareStatement(
 					"INSERT INTO producto " + "(nombre, descripcion, cantidad) " + "VALUES (?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 
 			try (statement) {
 				ejecutarRegistro(statement, producto);
-
-				/*
-				 * When auto-commit is set to false, we have to explicitly commit the changes to
-				 * the database
-				 */
-				this.con.commit();
-			} catch (Exception e) {
-				this.con.rollback();
 			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
