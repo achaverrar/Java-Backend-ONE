@@ -86,9 +86,7 @@ public class ProductoController {
 	}
 
 	public void guardar(Producto producto) {
-		ProductoDAO productoDAO = new ProductoDAO(new ConnectionFactory().recuperaConexion());
-
-		productoDAO.guardar(producto);
+		this.productoDAO.guardar(producto);
 	}
 
 }
