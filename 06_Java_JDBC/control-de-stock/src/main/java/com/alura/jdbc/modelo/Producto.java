@@ -13,6 +13,13 @@ public class Producto {
 		this.cantidad = cantidadInt;
 	}
 
+	public Producto(int id, String nombre, String descripcion, int cantidadInt) {
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.cantidad = cantidadInt;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -39,6 +46,10 @@ public class Producto {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public Integer getId() {
+		return this.id;
 	}
 	
 	@Override
