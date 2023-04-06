@@ -21,6 +21,12 @@ public class Producto {
 		this.cantidad = cantidadInt;
 	}
 	
+	public Producto(int id, String nombre, int cantidad) {
+		this.id = id;
+		this.nombre = nombre;
+		this.cantidad = cantidad;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
