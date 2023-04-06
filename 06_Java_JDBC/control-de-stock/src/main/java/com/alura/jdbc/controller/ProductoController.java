@@ -25,10 +25,6 @@ public class ProductoController {
 	public List<Producto> listar() {
 		return this.productoDAO.listar();
 	}
-	
-	public List<Producto> listar(Categoria categoria) {
-		return this.productoDAO.listar(categoria.getId());
-	}
 
 	public void guardar(Producto producto, Integer categoriaId) {
 		producto.setCategoriaId(categoriaId);
