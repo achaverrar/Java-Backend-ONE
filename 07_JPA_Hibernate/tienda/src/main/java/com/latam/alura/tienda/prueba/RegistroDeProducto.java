@@ -9,19 +9,23 @@ import javax.persistence.Persistence;
 import com.latam.alura.tienda.modelo.Categoria;
 import com.latam.alura.tienda.modelo.Producto;
 import com.latam.alura.tienda.utils.JPAUtils;
+import com.latam.alura.tienda.dao.CategoriaDao;
 import com.latam.alura.tienda.dao.ProductoDao;
 
 public class RegistroDeProducto {
 
 	public static void main(String[] args) {
-		Producto celular = new Producto("Samsung", "teléfono usado", new BigDecimal("1000"), Categoria.CELULARES);
+		Categoria celulares = new Categoria("CELULARES");
+		Producto celular = new Producto("Samsung", "teléfono usado", new BigDecimal("1000"), celulares);
 		
 		EntityManager em = JPAUtils.getEntityManager();
 		
 		ProductoDao productoDao = new ProductoDao(em);
+		CategoriaDao categoriaDao = new CategoriaDao(em);
 		
 		em.getTransaction().begin();
 
+		categoriaDao.guardar(celulares);
 		productoDao.guardar(celular);
 		
 		em.getTransaction().commit();
