@@ -39,6 +39,11 @@ public class RegistroDeProducto {
 		
 		//em.getTransaction().commit();
 		em.flush();
+		em.clear();
+		
+		celulares = em.merge(celulares);
+		em.remove(celulares);
+		em.flush();
 
 	}
 
