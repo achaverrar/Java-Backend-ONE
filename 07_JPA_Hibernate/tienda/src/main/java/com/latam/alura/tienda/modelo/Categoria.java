@@ -15,6 +15,8 @@ public class Categoria {
 	private Long id;
 	private String nombre;
 
+	public Categoria() {}
+	
 	public Categoria(String nombre) {
 		super();
 		this.nombre = nombre;
