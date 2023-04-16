@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,15 +20,15 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private LocalDate fecha;
+	private LocalDate fecha = LocalDate.now();
 	private BigDecimal valorTotal;
 	
 	@ManyToOne
 	private Cliente cliente;
 	
-	@ManyToMany
+	@OneToMany
 	@JoinTable(name="items_pedidox")
-	private List<Producto> productos;
+	private List<ItemsPedido> items;
 	
 	public Pedido() {
 	}
