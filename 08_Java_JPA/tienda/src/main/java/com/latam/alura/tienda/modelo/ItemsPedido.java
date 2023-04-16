@@ -27,13 +27,13 @@ public class ItemsPedido {
 	private Pedido pedido;
 
 	public ItemsPedido() {
-		super();
 	}
 
 	public ItemsPedido(int cantidad, Producto producto, Pedido pedido) {
 		this.cantidad = cantidad;
 		this.producto = producto;
 		this.pedido = pedido;
+		this.precioUnitario = this.producto.getPrecio();
 	}
 
 	public Long getId() {
