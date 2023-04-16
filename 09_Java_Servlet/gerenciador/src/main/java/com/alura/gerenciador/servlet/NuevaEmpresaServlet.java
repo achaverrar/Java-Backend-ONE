@@ -11,7 +11,12 @@ import java.io.PrintWriter;
 public class NuevaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*
+	 * the service and doPost methods receive the same parameters
+	 * service() allows get requests as well as post ones
+	 * doPost() only allows post requests (returning 405 errors to not allowed request)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Nueva empresa registrada");
 		String nombreEmpresa = request.getParameter("nombre");
 		PrintWriter out = response.getWriter();
