@@ -1,9 +1,3 @@
-<%
-	// This is a scriptlet
-	String empresa = (String) request.getAttribute("empresa");
-	System.out.println(empresa);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +5,7 @@
 <title>Nueva Empresa Registrada</title>
 </head>
 <body>
-<p>La empresa <% out.println(empresa); %> fue registrada!</p>
-<% // A shorcut below %>
-<p>La empresa <%= empresa %> fue registrada!</p>
+	<% // Expression language %>
+	<p>La empresa ${empresa} fue registrada!</p>
 </body>
 </html>
