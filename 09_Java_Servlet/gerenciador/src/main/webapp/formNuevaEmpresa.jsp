@@ -8,8 +8,14 @@
 </head>
 <body>
 	<form action="/gerenciador/nuevaEmpresa" method="post">
+		<div>
 		<label>Nombre empresa:</label>
 		<input type="text" name="nombre" />
+		</div>
+		<label>Fecha de apertura:</label>
+		<input type="text" name="fecha" />
+		<div>		
+		</div>
 		<input type="submit" value="Enviar">
 	</form>
 </body>
