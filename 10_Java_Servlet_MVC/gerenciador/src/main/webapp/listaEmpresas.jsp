@@ -1,4 +1,4 @@
-<%@page import="com.alura.gerenciador.servlet.Empresa, java.util.List"%>
+<%@page import="com.alura.gerenciador.modelo.Empresa, java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
