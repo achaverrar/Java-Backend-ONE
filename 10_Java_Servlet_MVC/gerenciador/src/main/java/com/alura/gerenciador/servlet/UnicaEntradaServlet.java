@@ -9,6 +9,8 @@ import java.io.IOException;
 
 import com.alura.gerenciador.accion.EliminarEmpresa;
 import com.alura.gerenciador.accion.ListaEmpresas;
+import com.alura.gerenciador.accion.ModificarEmpresa;
+import com.alura.gerenciador.accion.MostrarEmpresa;
 
 @WebServlet("/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
@@ -25,7 +27,15 @@ public class UnicaEntradaServlet extends HttpServlet {
 			accion.ejecutar(request, response);
 
 		} else if (paramAccion.equals("MostrarEmpresa")) {
-			System.out.println("Mostrando una empresa");
+			
+			MostrarEmpresa accion = new MostrarEmpresa();
+			accion.ejecutar(request, response);
+			
+		} else if (paramAccion.equals("ModificarEmpresa")) {
+			
+			ModificarEmpresa accion = new ModificarEmpresa();
+			accion.ejecutar(request, response);
+			
 		} else if (paramAccion.equals("EliminarEmpresa")) {
 
 			EliminarEmpresa accion = new EliminarEmpresa();
