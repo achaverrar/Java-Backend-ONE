@@ -7,21 +7,26 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.alura.gerenciador.accion.ListaEmpresas;
+
 @WebServlet("/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String param = request.getParameter("accion");
-		
-		if(param.equals("listaEmpresas")) {
-			System.out.println("Listando empresas");
-		} else if (param.equals("MostrarEmpresa")) {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String paramAccion = request.getParameter("accion");
+
+		if (paramAccion.equals("ListaEmpresas")) {
+
+			ListaEmpresas accion = new ListaEmpresas();
+			accion.ejecutar(request, response);
+
+		} else if (paramAccion.equals("MostrarEmpresa")) {
 			System.out.println("Mostrando una empresa");
-		} else if (param.equals("EliminarEmpresa")) {
+		} else if (paramAccion.equals("EliminarEmpresa")) {
 			System.out.println("Eliminando empresas");
 		}
 	}
-
 }
