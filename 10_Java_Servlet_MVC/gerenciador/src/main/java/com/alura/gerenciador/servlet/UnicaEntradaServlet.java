@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.alura.gerenciador.accion.Accion;
 import com.alura.gerenciador.accion.EliminarEmpresa;
 import com.alura.gerenciador.accion.ListaEmpresas;
 import com.alura.gerenciador.accion.ModificarEmpresa;
@@ -23,49 +24,25 @@ public class UnicaEntradaServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String paramAccion = request.getParameter("accion");
-		String redirect = null; 
 
-		if (paramAccion.equals("ListaEmpresas")) {
+		String nombreDeClase = "com.alura.gerenciador.accion." + paramAccion;
 
-			ListaEmpresas accion = new ListaEmpresas();
+		String redirect;
+		try {
+			Class clase = Class.forName(nombreDeClase);
+			Accion accion = (Accion) clase.newInstance();
 			redirect = accion.ejecutar(request, response);
-
-		} else if (paramAccion.equals("MostrarEmpresa")) {
-
-			MostrarEmpresa accion = new MostrarEmpresa();
-			redirect = accion.ejecutar(request, response);
-
-		} else if (paramAccion.equals("ModificarEmpresa")) {
-
-			ModificarEmpresa accion = new ModificarEmpresa();
-			redirect = accion.ejecutar(request, response);
-
-		} else if (paramAccion.equals("NuevaEmpresa")) {
-		
-			NuevaEmpresa accion = new NuevaEmpresa();
-			redirect = accion.ejecutar(request, response);
-		} else if (paramAccion.equals("NuevaEmpresaForm")) {
-			
-			NuevaEmpresaForm accion = new NuevaEmpresaForm();
-			redirect = accion.ejecutar(request, response);
-
-		} else if (paramAccion.equals("EliminarEmpresa")) {
-
-			EliminarEmpresa accion = new EliminarEmpresa();
-			redirect = accion.ejecutar(request, response);
-
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException
+				| IOException e) {
+			throw new ServletException(e);
 		}
-		
-		String[] tipoYDireccion = redirect.split(":");
-		if(tipoYDireccion[0].equals("forward")) {
 
+		String[] tipoYDireccion = redirect.split(":");
+		if (tipoYDireccion[0].equals("forward")) {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoYDireccion[1]);
 			rd.forward(request, response);
-
 		} else {
-
 			response.sendRedirect(tipoYDireccion[1]);
-
 		}
 	}
 }
