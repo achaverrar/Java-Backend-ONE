@@ -10,7 +10,7 @@ public class NuevaEmpresaForm {
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		return "forward:/formNuevaEmpresa.jsp";
+		return "forward:formNuevaEmpresa.jsp";
 
 	}
 }

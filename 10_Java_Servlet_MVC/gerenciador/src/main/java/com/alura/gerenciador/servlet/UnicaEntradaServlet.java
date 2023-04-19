@@ -59,7 +59,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 		String[] tipoYDireccion = redirect.split(":");
 		if(tipoYDireccion[0].equals("forward")) {
 
-			RequestDispatcher rd = request.getRequestDispatcher(tipoYDireccion[1]);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoYDireccion[1]);
 			rd.forward(request, response);
 
 		} else {
