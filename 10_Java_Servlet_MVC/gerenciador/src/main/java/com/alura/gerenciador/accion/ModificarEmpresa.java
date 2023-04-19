@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class ModificarEmpresa {
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("Empresa modificada");
 
@@ -39,6 +39,6 @@ public class ModificarEmpresa {
 		empresa.setNombre(nombreEmpresa);
 		empresa.setFechaApertura(fechaApertura);
 
-		response.sendRedirect("entrada?accion=ListaEmpresas");
+		return "redirect:entrada?accion=ListaEmpresas";
 	}
 }

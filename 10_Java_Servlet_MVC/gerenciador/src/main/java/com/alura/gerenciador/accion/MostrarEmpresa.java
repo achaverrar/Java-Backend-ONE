@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class MostrarEmpresa {
 
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String paramId = request.getParameter("id");
@@ -28,8 +28,7 @@ public class MostrarEmpresa {
 
 		request.setAttribute("empresa", empresa);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/formModificarEmpresa.jsp");
-		rd.forward(request, response);
+		return "forward:/formModificarEmpresa.jsp";
 
 	}
 }

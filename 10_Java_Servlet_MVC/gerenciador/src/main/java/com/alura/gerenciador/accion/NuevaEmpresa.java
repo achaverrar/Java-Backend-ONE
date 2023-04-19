@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class NuevaEmpresa {
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("Nueva empresa registrada");
 
@@ -37,6 +37,6 @@ public class NuevaEmpresa {
 
 		// The code below causes client side redirection
 		// Do not use a backslash at the beginning of the string
-		response.sendRedirect("entrada?accion=ListaEmpresas");
+		return "redirect:entrada?accion=ListaEmpresas";
 	}
 }

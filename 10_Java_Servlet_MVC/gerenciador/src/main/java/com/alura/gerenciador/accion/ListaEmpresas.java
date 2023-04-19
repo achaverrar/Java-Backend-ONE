@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class ListaEmpresas {
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response)
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("Listando empresas");
 
@@ -21,7 +21,6 @@ public class ListaEmpresas {
 
 		request.setAttribute("empresas", listaEmpresas);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
-		rd.forward(request, response);
+		return "forward:/listaEmpresas.jsp";
 	}
 }
