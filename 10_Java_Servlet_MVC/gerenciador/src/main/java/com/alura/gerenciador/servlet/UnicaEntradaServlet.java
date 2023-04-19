@@ -11,6 +11,7 @@ import com.alura.gerenciador.accion.EliminarEmpresa;
 import com.alura.gerenciador.accion.ListaEmpresas;
 import com.alura.gerenciador.accion.ModificarEmpresa;
 import com.alura.gerenciador.accion.MostrarEmpresa;
+import com.alura.gerenciador.accion.NuevaEmpresa;
 
 @WebServlet("/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
@@ -34,6 +35,11 @@ public class UnicaEntradaServlet extends HttpServlet {
 		} else if (paramAccion.equals("ModificarEmpresa")) {
 			
 			ModificarEmpresa accion = new ModificarEmpresa();
+			accion.ejecutar(request, response);
+
+		} else if (paramAccion.equals("NuevaEmpresa")) {
+			
+			NuevaEmpresa accion = new NuevaEmpresa();
 			accion.ejecutar(request, response);
 			
 		} else if (paramAccion.equals("EliminarEmpresa")) {
