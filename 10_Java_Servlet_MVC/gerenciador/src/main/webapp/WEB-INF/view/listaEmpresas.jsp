@@ -10,7 +10,7 @@
 <title>Lista de Empresas</title>
 </head>
 <body>
-	<a href="/gerenciador/entrada?accion=Logout">Salir</a>
+	<c:import url="logoutParcial.jsp"></c:import>
 	<h1>Usuario Loggeado: ${ loginUsuario.login }</h1>
 	<h2>Lista de empresas:</h2>
 	<ul>

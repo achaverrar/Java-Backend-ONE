@@ -6,6 +6,7 @@
 <title>Nueva Empresa Registrada</title>
 </head>
 <body>
+	<c:import url="logoutParcial.jsp"></c:import>
 	<c:if test="${not empty empresa}">
 	<p>La empresa ${empresa} fue registrada!</p>
 	</c:if>

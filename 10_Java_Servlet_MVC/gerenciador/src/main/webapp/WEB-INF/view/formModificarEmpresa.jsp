@@ -9,6 +9,7 @@
 <title>Registrar Empresa</title>
 </head>
 <body>
+	<c:import url="logoutParcial.jsp"></c:import>
 	<form action="${ linkEntradaServlet }" method="post">
 		<div>
 			<label>Nombre empresa:</label>
