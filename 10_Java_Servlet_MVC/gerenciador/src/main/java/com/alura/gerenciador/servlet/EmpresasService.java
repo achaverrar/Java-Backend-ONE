@@ -18,22 +18,25 @@ import jakarta.servlet.http.HttpServletResponse;
 public class EmpresasService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		List<Empresa> empresas = new DB().getEmpresas();
-		
+
 		// JSON
-		//Gson gson = new Gson();
-		//String json = gson.toJson(empresas);
-		
+		// Gson gson = new Gson();
+		// String json = gson.toJson(empresas);
+
 		// ContentType Values
 		// html -> Text/html
 		// xml -> Application/xml
 		// jsp -> Not needed
 		// response.setContentType("Application/json");
 		// response.getWriter().print(json);
-		
+
 		// XML
 		XStream xstream = new XStream();
+		xstream.alias("empresa", Empresa.class);
+
 		String xml = xstream.toXML(empresas);
 		response.setContentType("Application/xml");
 		response.getWriter().print(xml);
