@@ -13,9 +13,13 @@ public class Logout implements Accion {
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession sesion = request.getSession();
-		
-		sesion.removeAttribute("loginUsuario");
-		
+
+		// Removes an attribute from the session
+		// sesion.removeAttribute("loginUsuario");
+
+		// Removes the whole session
+		sesion.invalidate();
+
 		return "redirect:entrada?accion=LoginForm";
 	}
 
