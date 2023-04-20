@@ -10,6 +10,7 @@
 <title>Lista de Empresas</title>
 </head>
 <body>
+	<a href="/gerenciador/entrada?accion=Logout">Salir</a>
 	<h1>Usuario Loggeado: ${ loginUsuario.login }</h1>
 	<h2>Lista de empresas:</h2>
 	<ul>
