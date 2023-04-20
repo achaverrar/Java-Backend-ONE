@@ -26,16 +26,6 @@ public class UnicaEntradaServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String paramAccion = request.getParameter("accion");
-		HttpSession sesion = request.getSession();
-
-		Boolean esUsuarioAutenticado = sesion.getAttribute("loginUsuario") != null;
-		Boolean esAccionProtegida = !paramAccion.equals("Login") && !paramAccion.equals("LoginForm");
-
-		if (!esUsuarioAutenticado && esAccionProtegida) {
-			response.sendRedirect("entrada?accion=LoginForm");
-			return;
-		}
-
 		String nombreDeClase = "com.alura.gerenciador.accion." + paramAccion;
 		String redirect;
 
