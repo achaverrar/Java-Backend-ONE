@@ -1,24 +1,17 @@
 package com.alura.gerenciador.servlet;
 
+import java.io.IOException;
+
+import com.alura.gerenciador.accion.Accion;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
-
-import com.alura.gerenciador.accion.Accion;
-import com.alura.gerenciador.accion.EliminarEmpresa;
-import com.alura.gerenciador.accion.ListaEmpresas;
-import com.alura.gerenciador.accion.ModificarEmpresa;
-import com.alura.gerenciador.accion.MostrarEmpresa;
-import com.alura.gerenciador.accion.NuevaEmpresa;
-import com.alura.gerenciador.accion.NuevaEmpresaForm;
-
-@WebServlet(urlPatterns = "/entrada")
+//@WebServlet(urlPatterns = "/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
