@@ -18,7 +18,7 @@ import com.alura.gerenciador.accion.MostrarEmpresa;
 import com.alura.gerenciador.accion.NuevaEmpresa;
 import com.alura.gerenciador.accion.NuevaEmpresaForm;
 
-@WebServlet("/entrada")
+@WebServlet(urlPatterns = "/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
