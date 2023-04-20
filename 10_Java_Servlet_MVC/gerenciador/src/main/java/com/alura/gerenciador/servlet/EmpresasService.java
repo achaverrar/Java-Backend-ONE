@@ -22,24 +22,25 @@ public class EmpresasService extends HttpServlet {
 			throws ServletException, IOException {
 		List<Empresa> empresas = new DB().getEmpresas();
 
-		// JSON
-		// Gson gson = new Gson();
-		// String json = gson.toJson(empresas);
+		String valor = request.getHeader("Accept");
 
-		// ContentType Values
-		// html -> Text/html
-		// xml -> Application/xml
-		// jsp -> Not needed
-		// response.setContentType("Application/json");
-		// response.getWriter().print(json);
+		if (valor.contains("xml")) {
+			XStream xstream = new XStream();
+			xstream.alias("empresa", Empresa.class);
 
-		// XML
-		XStream xstream = new XStream();
-		xstream.alias("empresa", Empresa.class);
+			String xml = xstream.toXML(empresas);
+			response.setContentType("Application/xml");
+			response.getWriter().print(xml);
+		} else if (valor.contains("json")) {
+			Gson gson = new Gson();
+			String json = gson.toJson(empresas);
+			response.setContentType("Application/json");
+			response.getWriter().print(json);
+		} else {
+			response.setContentType("Application/json");
+			response.getWriter().print("{'message':'No content'}");
+		}
 
-		String xml = xstream.toXML(empresas);
-		response.setContentType("Application/xml");
-		response.getWriter().print(xml);
 	}
 
 }
