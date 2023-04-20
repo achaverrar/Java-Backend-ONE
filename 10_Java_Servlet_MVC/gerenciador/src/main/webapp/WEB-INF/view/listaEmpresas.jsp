@@ -10,7 +10,8 @@
 <title>Lista de Empresas</title>
 </head>
 <body>
-	<h1>Lista de empresas:</h1>
+	<h1>Usuario Loggeado: ${ loginUsuario.login }</h1>
+	<h2>Lista de empresas:</h2>
 	<ul>
 		<c:forEach items="${empresas}" var="empresa">
 			<li>${empresa.nombre} - <fmt:formatDate value="${empresa.fechaApertura}" pattern="dd/MM/yyyy"/>
