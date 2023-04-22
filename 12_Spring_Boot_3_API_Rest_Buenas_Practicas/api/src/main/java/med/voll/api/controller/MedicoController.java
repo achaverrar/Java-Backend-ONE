@@ -33,8 +33,8 @@ public class MedicoController {
     // @PageableDefault overwrites default settings
     // Query params overwrite our settings
     @GetMapping
-    public Page<DatosListadoMedico> listadoMedicos(@PageableDefault(size=1) Pageable paginacion) {
-        return medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new);
+    public ResponseEntity<Page<DatosListadoMedico>> listadoMedicos(@PageableDefault(size=1) Pageable paginacion) {
+        return ResponseEntity.ok(medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new));
     }
 
     @PutMapping
@@ -55,7 +55,7 @@ public class MedicoController {
         // returns 204
         return ResponseEntity.noContent().build();
     }
-    
+
     @GetMapping("/{id}")
     public ResponseEntity<DatosRespuestaMedico> retornDatosMedico(@PathVariable Long id) {
         Medico medico = medicoRepository.getReferenceById(id);
