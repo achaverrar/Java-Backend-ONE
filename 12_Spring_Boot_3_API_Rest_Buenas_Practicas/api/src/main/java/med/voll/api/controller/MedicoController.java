@@ -55,5 +55,11 @@ public class MedicoController {
         // returns 204
         return ResponseEntity.noContent().build();
     }
-
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosRespuestaMedico> retornDatosMedico(@PathVariable Long id) {
+        Medico medico = medicoRepository.getReferenceById(id);
+        var datosMedico = new DatosRespuestaMedico(medico.getId(), medico.getNombre(), medico.getEmail(), medico.getTelefono(), medico.getEspecialidad().toString(), new DatosDireccion(medico.getDireccion().getCalle(), medico.getDireccion().getDistrito(), medico.getDireccion().getCiudad(), medico.getDireccion().getNumero(), medico.getDireccion().getComplemento()));
+        return ResponseEntity.ok(datosMedico);
+    }
 }
