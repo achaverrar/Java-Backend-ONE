@@ -27,8 +27,13 @@ public class MedicoController {
     // Query params overwrite our settings
     @GetMapping
     public Page<DatosListadoMedico> listadoMedicos(@PageableDefault(size=1) Pageable paginacion) {
-        return medicoRepository.findAll(paginacion).map(DatosListadoMedico::new);
+        return medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new);
     }
+
+//    @GetMapping
+//    public Page<DatosListadoMedico> listadoMedicos(@PageableDefault(size=1) Pageable paginacion) {
+//        return medicoRepository.findAll(paginacion).map(DatosListadoMedico::new);
+//    }
 
     @PutMapping
     @Transactional
