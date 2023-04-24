@@ -1,0 +1,1 @@
+<a href="/gerenciador/entrada?accion=Logout">Salir</a>
